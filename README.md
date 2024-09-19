@@ -228,7 +228,7 @@ const ref = useRef(initialValue);
 - **DOM manipulation**: Useful for accessing and manipulating DOM elements directly.
 
 #### Example:
-```
+```JSX
 const InputFocus = () => {
   const inputRef = useRef(null);
 
