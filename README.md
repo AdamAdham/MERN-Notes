@@ -7,7 +7,7 @@
 - Manages state within a functional component.
 
 #### Syntax:
-```
+```JSX
 const [state, setState] = useState(initialValue);
 ```
 
@@ -17,7 +17,7 @@ const [state, setState] = useState(initialValue);
 - **`initialValue`**: Can be a primitive, array, object, or any data type.
 
 #### Example:
-```
+```JSX
 const [count, setCount] = useState(0);
 
 return (
@@ -28,7 +28,7 @@ return (
 ```
 
 - **Optimization**: When setting state based on the previous state, use a function to access the previous state:
-  ```
+  ```JSX
   setState(prevState => prevState + 1);
   ```
 
@@ -39,7 +39,7 @@ return (
 - Handles side effects like data fetching, subscriptions, or manually manipulating the DOM.
 
 #### Syntax:
-```
+```JSX
 useEffect(() => {
   // effect code here
   return () => {
@@ -54,7 +54,7 @@ useEffect(() => {
 - **Return function**: Used for cleanup (e.g., unsubscribing from an event).
 
 #### Example:
-```
+```JSX
 useEffect(() => {
   const fetchData = async () => {
     const result = await axios.get('/api/data');
@@ -66,7 +66,7 @@ useEffect(() => {
 
 - **Optimization**: Make sure to list all dependencies in the array to avoid bugs.
 - **Cleanup**: For example, cleaning up a subscription:
-  ```
+  ```JSX
   useEffect (() => {
     window.addEventListener('resize', handleResize)
     return () => {
@@ -82,7 +82,7 @@ useEffect(() => {
 - Consumes a context created by `React.createContext` for sharing global state between components without props drilling.
 
 #### Syntax:
-```
+```JSX
 const value = useContext(MyContext);
 ```
 
@@ -91,7 +91,7 @@ const value = useContext(MyContext);
 - **useContext**: Extracts the value from the nearest `Context.Provider`.
 
 #### Example:
-```
+```JSX
 const MyContext = React.createContext();
 
 const MyComponent = () => {
@@ -113,7 +113,7 @@ const App = () => (
 - Manages complex state logic or when state transitions are based on actions, similar to Redux.
 
 #### Syntax:
-```
+```JSX
 const [state, dispatch] = useReducer(reducer, initialState);
 ```
 
@@ -122,7 +122,7 @@ const [state, dispatch] = useReducer(reducer, initialState);
 - **dispatch**: Function to trigger state transitions by passing actions.
 
 #### Example:
-```
+```JSX
 const initialState = { count: 0 };
 
 function reducer(state, action) {
@@ -158,7 +158,7 @@ const Counter = () => {
 - Memoizes expensive calculations and returns a cached value until dependencies change. It prevents recalculations when not necessary, improving performance.
 
 #### Syntax:
-```
+```JSX
 const memoizedValue = useMemo(() => computeExpensiveValue(a, b), [a, b]);
 ```
 
@@ -167,7 +167,7 @@ const memoizedValue = useMemo(() => computeExpensiveValue(a, b), [a, b]);
 - **Performance Optimization**: Useful in preventing expensive calculations from running on every render.
 
 #### Example:
-```
+```JSX
 const computeExpensiveValue = (a, b) => {
   console.log('Calculating...');
   return a + b;
@@ -189,7 +189,7 @@ const MyComponent = ({ a, b }) => {
 - Returns a memoized version of a function, which is useful to prevent unnecessary re-renders when passing callbacks to child components.
 
 #### Syntax:
-```
+```JSX
 const memoizedCallback = useCallback(() => {
   doSomething(a, b);
 }, [a, b]);
@@ -200,7 +200,7 @@ const memoizedCallback = useCallback(() => {
 - **Prevents unnecessary re-renders**: The callback will only be recreated if dependencies change.
 
 #### Example:
-```
+```JSX
 const MyComponent = ({ value }) => {
   const handleClick = useCallback(() => {
     console.log(value);
@@ -219,7 +219,7 @@ const MyComponent = ({ value }) => {
 - Stores a mutable object or DOM reference that persists across renders without causing re-renders.
 
 #### Syntax:
-```
+```JSX
 const ref = useRef(initialValue);
 ```
 
